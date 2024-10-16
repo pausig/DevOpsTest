@@ -8,7 +8,8 @@
             Console.WriteLine($"Available features:{Environment.NewLine}" +
                 $"1) Add a new contact{Environment.NewLine}" +
                 $"2) View contact list{Environment.NewLine}" +
-                $"3) Search contact by name{Environment.NewLine}");
+                $"3) Search contact by name{Environment.NewLine}" +
+                $"4) Delete a contact{Environment.NewLine}");
 
             string choice;
             while (true)
@@ -57,6 +58,24 @@
                         else
                         {
                             Console.WriteLine($"\"{searchQuery}\" is NOT in the contact list.");
+                        }
+                        break;
+                    case "4":
+                        Console.Write("Contact name: ");
+                        string contactToRemove = Console.ReadLine();
+
+                        if (String.IsNullOrWhiteSpace(contactToRemove))
+                        {
+                            Console.WriteLine("Invalid contact name provided.");
+                        }
+                        else if (contacts.Contains(contactToRemove))
+                        {
+                            contacts.Remove(contactToRemove);
+                            Console.WriteLine($"\"{contactToRemove}\" has been removed from the contact list.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"\"{contactToRemove}\" is NOT in the contact list.");
                         }
                         break;
                     default:
