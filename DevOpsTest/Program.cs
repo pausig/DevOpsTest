@@ -4,7 +4,40 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            List<string> contacts = new List<string>();
+            Console.WriteLine($"Available features:{Environment.NewLine}" +
+                $"1) Add a new contact{Environment.NewLine}");
+
+            string choice;
+            while (true)
+            {
+                Console.Write("Choose a feature: ");
+                choice = Console.ReadLine() ?? string.Empty;
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("New contact name: ");
+                        string contactName = Console.ReadLine();
+
+                        if (String.IsNullOrWhiteSpace(contactName))
+                        {
+                            Console.WriteLine("Invalid contact name provided.");
+                        }
+                        else if (contacts.Contains(contactName))
+                        {
+                            Console.WriteLine($"A contact named \"{contactName}\" already exists.");
+                        }
+                        else
+                        {
+                            contacts.Add(contactName);
+                            Console.WriteLine($"Successfully added \"{contactName}\" to contacts.");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Unknown feature.");
+                        break;
+                }
+            }
         }
     }
 }
