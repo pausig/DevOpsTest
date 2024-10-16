@@ -7,7 +7,8 @@
             List<string> contacts = new List<string>();
             Console.WriteLine($"Available features:{Environment.NewLine}" +
                 $"1) Add a new contact{Environment.NewLine}" +
-                $"2) View contact list{Environment.NewLine}");
+                $"2) View contact list{Environment.NewLine}" +
+                $"3) Search contact by name{Environment.NewLine}");
 
             string choice;
             while (true)
@@ -39,6 +40,23 @@
                         foreach (var item in contacts)
                         {
                             Console.WriteLine($" |- {item}");
+                        }
+                        break;
+                    case "3":
+                        Console.Write("Search query: ");
+                        string searchQuery = Console.ReadLine();
+
+                        if (String.IsNullOrWhiteSpace(searchQuery))
+                        {
+                            Console.WriteLine("Invalid contact name provided.");
+                        }
+                        else if (contacts.Contains(searchQuery))
+                        {
+                            Console.WriteLine($"\"{searchQuery}\" is in the contact list.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"\"{searchQuery}\" is NOT in the contact list.");
                         }
                         break;
                     default:
