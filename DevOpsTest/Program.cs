@@ -1,4 +1,6 @@
-﻿namespace DevOpsTest
+﻿using System.Runtime.InteropServices;
+
+namespace DevOpsTest
 {
     internal class Program
     {
@@ -9,10 +11,12 @@
                 $"1) Add a new contact{Environment.NewLine}" +
                 $"2) View contact list{Environment.NewLine}" +
                 $"3) Search contact by name{Environment.NewLine}" +
-                $"4) Delete a contact{Environment.NewLine}");
+                $"4) Delete a contact{Environment.NewLine}" +
+                $"5) Exit{Environment.NewLine}");
 
+            bool running = true;
             string choice;
-            while (true)
+            while (running)
             {
                 Console.Write("Choose a feature: ");
                 choice = Console.ReadLine() ?? string.Empty;
@@ -77,6 +81,10 @@
                         {
                             Console.WriteLine($"\"{contactToRemove}\" is NOT in the contact list.");
                         }
+                        break;
+                    case "5":
+                        running = false;
+                        Console.WriteLine("Goodbye!");
                         break;
                     default:
                         Console.WriteLine("Unknown feature.");
