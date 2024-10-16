@@ -6,7 +6,8 @@
         {
             List<string> contacts = new List<string>();
             Console.WriteLine($"Available features:{Environment.NewLine}" +
-                $"1) Add a new contact{Environment.NewLine}");
+                $"1) Add a new contact{Environment.NewLine}" +
+                $"2) View contact list{Environment.NewLine}");
 
             string choice;
             while (true)
@@ -31,6 +32,13 @@
                         {
                             contacts.Add(contactName);
                             Console.WriteLine($"Successfully added \"{contactName}\" to contacts.");
+                        }
+                        break;
+                    case "2":
+                        Console.WriteLine("Contact list:");
+                        foreach (var item in contacts)
+                        {
+                            Console.WriteLine($" |- {item}");
                         }
                         break;
                     default:
